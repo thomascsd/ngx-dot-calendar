@@ -4,11 +4,12 @@ import { DateRenderer } from '../interfaces/DateRenderer';
 import { DateContent } from '../interfaces/DateContent';
 
 @Component({
-  selector: 'az-idatepicker',
-  templateUrl: './idatepicker.component.html',
-  styleUrls: ['idatepicker.sass']
+  // tslint:disable-next-line:component-selector
+  selector: 'dot-calendar',
+  templateUrl: './dot-calendar.component.html',
+  styleUrls: ['dot-calendar.sass']
 })
-export class IDatePickerComponent implements OnInit {
+export class DotCalendarComponent implements OnInit {
   selectedDate: string = moment().format('YYYY-MM-DD');
   dateOutput: string;
   selectedYear: string;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DateContent } from './idatepicker/interfaces/DateContent';
+import { DateContent } from './calendar/interfaces/DateContent';
 
 @Component({
   selector: 'app-root',

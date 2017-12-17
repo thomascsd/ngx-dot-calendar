@@ -1,16 +1,17 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'az-idatepicker-dates',
-  templateUrl: './idatepicker-dates.component.html',
-  styleUrls: ['idatepicker-dates.sass']
+  // tslint:disable-next-line:component-selector
+  selector: 'dot-calendar-dates',
+  templateUrl: './dot-calendar-dates.component.html',
+  styleUrls: ['dot-calendar-dates.sass']
 })
-export class IDatePickerDatesComponent implements OnInit {
-  dateSymbol: Array<string>;
+export class DotCalendarDatesComponent implements OnInit {
+  dateSymbol: string[];
 
-  @Input() dayLabels: Array<string>;
-  @Input() weeks: Array<number>;
-  @Input() dates: Array<Object>;
+  @Input() dayLabels: string[];
+  @Input() weeks: number[];
+  @Input() dates: Object[];
   @Input() selectedDate: string;
   @Input() sundayHighlight: boolean;
 
@@ -20,7 +21,7 @@ export class IDatePickerDatesComponent implements OnInit {
     this.dateSymbol = this.parseWeekDays();
   }
 
-  parseWeekDays(): Array<string> {
+  parseWeekDays(): string[] {
     if (!this.dayLabels) {
       return ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
     }

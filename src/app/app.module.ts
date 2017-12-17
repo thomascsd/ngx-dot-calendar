@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { IDatePickerModule } from './idatepicker/idatepicker.module';
+import { IDatePickerModule } from './calendar/calendar.module';
 
 @NgModule({
   declarations: [

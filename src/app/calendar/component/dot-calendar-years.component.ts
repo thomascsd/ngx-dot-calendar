@@ -12,11 +12,12 @@ import * as moment from 'moment';
 import locale = moment.locale;
 
 @Component({
-  selector: 'az-idatepicker-years',
-  templateUrl: './idatepicker-years.component.html',
-  styleUrls: ['idatepicker-years.sass']
+  // tslint:disable-next-line:component-selector
+  selector: 'dot-calendar-years',
+  templateUrl: './dot-calendar-years.component.html',
+  styleUrls: ['dot-calendar-years.sass']
 })
-export class IDatePickerYearsComponent implements OnInit, AfterViewInit {
+export class DotCalendarYearsComponent implements OnInit, AfterViewInit {
   months: Array<Object>;
 
   @Input() locale: string;
@@ -66,3 +67,4 @@ export class IDatePickerYearsComponent implements OnInit, AfterViewInit {
     this.showCalendar.emit(selectedDate);
   }
 }
+`   `

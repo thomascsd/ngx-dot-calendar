@@ -45,12 +45,12 @@
                   </div>
                 </button>
               </div>
-              <az-idatepicker-dates *ngIf="changeViewOptions === false" [dayLabels]="dayLabels" [weeks]="weeks" [dates]="dates" [selectedDate]="selectedDate"
+              <dot-calendar-dates *ngIf="changeViewOptions === false" [dayLabels]="dayLabels" [weeks]="weeks" [dates]="dates" [selectedDate]="selectedDate"
                 [sundayHighlight]="sundayHighlight" (setSelectedDate)="selectDate($event)">
-              </az-idatepicker-dates>
-              <az-idatepicker-years [locale]="locale" [yearCalendar]="yearCalendar" [minYear]="minYear" [maxYear]="maxYear" (showCalendar)="viewBack($event)"
+              </dot-calendar-dates>
+              <dot-calendar-years [locale]="locale" [yearCalendar]="yearCalendar" [minYear]="minYear" [maxYear]="maxYear" (showCalendar)="viewBack($event)"
                 *ngIf="changeViewOptions === true">
-              </az-idatepicker-years>
+              </dot-calendar-years>
             </div>
           </div>
         </div>
