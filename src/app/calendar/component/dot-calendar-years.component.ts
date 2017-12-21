@@ -15,7 +15,7 @@ import locale = moment.locale;
   // tslint:disable-next-line:component-selector
   selector: 'dot-calendar-years',
   templateUrl: './dot-calendar-years.component.html',
-  styleUrls: ['dot-calendar-years.sass']
+  styleUrls: ['dot-calendar-years.scss']
 })
 export class DotCalendarYearsComponent implements OnInit, AfterViewInit {
   months: Array<Object>;

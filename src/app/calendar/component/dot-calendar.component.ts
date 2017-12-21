@@ -7,7 +7,7 @@ import { DateContent } from '../interfaces/DateContent';
   // tslint:disable-next-line:component-selector
   selector: 'dot-calendar',
   templateUrl: './dot-calendar.component.html',
-  styleUrls: ['dot-calendar.sass']
+  styleUrls: ['dot-calendar.scss']
 })
 export class DotCalendarComponent implements OnInit {
   selectedDate: string = moment().format('YYYY-MM-DD');

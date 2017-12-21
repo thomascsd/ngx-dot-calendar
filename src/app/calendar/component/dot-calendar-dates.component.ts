@@ -4,7 +4,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   // tslint:disable-next-line:component-selector
   selector: 'dot-calendar-dates',
   templateUrl: './dot-calendar-dates.component.html',
-  styleUrls: ['dot-calendar-dates.sass']
+  styleUrls: ['dot-calendar-dates.scss']
 })
 export class DotCalendarDatesComponent implements OnInit {
   dateSymbol: string[];
