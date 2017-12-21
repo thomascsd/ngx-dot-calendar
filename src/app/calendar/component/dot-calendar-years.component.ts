@@ -67,4 +67,3 @@ export class DotCalendarYearsComponent implements OnInit, AfterViewInit {
     this.showCalendar.emit(selectedDate);
   }
 }
-`   `
