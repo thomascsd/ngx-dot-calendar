@@ -26,12 +26,10 @@ export class DotCalendarComponent implements OnInit {
   viewCalendar = true;
   now = new Date();
 
-  @Input() placeholder = '';
   @Input() dayLabels: string[];
   @Input() locale = 'en-ca';
   @Input() format = 'YYYY-MM-DD';
   @Input() id = '';
-  @Input() name = '';
   @Input() idatePickerBinding: any = '';
   @Input() sundayHighlight = false;
   @Input() minYear = 2017;

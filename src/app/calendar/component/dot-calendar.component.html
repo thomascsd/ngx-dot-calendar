@@ -45,7 +45,7 @@
                   </div>
                 </button>
               </div>
-              <dot-calendar-dates *ngIf="changeViewOptions === false" [dayLabels]="dayLabels" [weeks]="weeks" [dates]="dates" [selectedDate]="selectedDate"
+              <dot-calendar-dates *ngIf="changeViewOptions === false" [locale]="locale" [weeks]="weeks" [dates]="dates" [selectedDate]="selectedDate"
                 [sundayHighlight]="sundayHighlight" (setSelectedDate)="selectDate($event)">
               </dot-calendar-dates>
               <dot-calendar-years [locale]="locale" [yearCalendar]="yearCalendar" [minYear]="minYear" [maxYear]="maxYear" (showCalendar)="viewBack($event)"

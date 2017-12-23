@@ -9,8 +9,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class DotCalendarDatesComponent implements OnInit {
   dateSymbol: string[];
 
-  @Input() dayLabels: string[];
   @Input() weeks: number[];
+  @Input() locale: string;
   @Input() dates: Object[];
   @Input() selectedDate: string;
   @Input() sundayHighlight: boolean;
@@ -22,10 +22,19 @@ export class DotCalendarDatesComponent implements OnInit {
   }
 
   parseWeekDays(): string[] {
-    if (!this.dayLabels) {
-      return ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+    const weekDays: string[] = [];
+    const d = new Date();
+
+    while (d.getDay() > 0) {
+      d.setDate(d.getDate() + 1);
     }
-    return this.dayLabels;
+
+    while (weekDays.length < 7) {
+      weekDays.push(d.toLocaleString(this.locale, { weekday: 'short' }));
+      d.setDate(d.getDate() + 1);
+    }
+
+    return weekDays;
   }
 
   getIsSelected(date: string): boolean {
