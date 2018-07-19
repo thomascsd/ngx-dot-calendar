@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "dot-calendar": {
+    "ngx-dot-calendar-web": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -36,30 +36,28 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ]
+              "fileReplacements": [{
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.prod.ts"
+              }]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "dot-calendar:build"
+            "browserTarget": "ngx-dot-calendar-web:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "dot-calendar:build:production"
+              "browserTarget": "ngx-dot-calendar-web:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "dot-calendar:build"
+            "browserTarget": "ngx-dot-calendar-web:build"
           }
         },
         "test": {
@@ -93,7 +91,7 @@
         }
       }
     },
-    "dot-calendar-e2e": {
+    "ngx-dot-calendar-web-e2e": {
       "root": "",
       "sourceRoot": "e2e",
       "projectType": "application",
@@ -159,7 +157,7 @@
       }
     }
   },
-  "defaultProject": "dot-calendar",
+  "defaultProject": "ngx-dot-calendar-web",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",

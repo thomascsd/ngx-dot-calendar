@@ -22,7 +22,7 @@ export class NgxDotCalendarDatesComponent implements OnInit {
   }
 
   parseWeekDays(): string[] {
-    const weekDays: string[] = [];
+    /*const weekDays: string[] = [];
     const d = new Date();
 
     while (d.getDay() > 0) {
@@ -32,9 +32,9 @@ export class NgxDotCalendarDatesComponent implements OnInit {
     while (weekDays.length < 7) {
       weekDays.push(d.toLocaleString(this.locale, { weekday: 'short' }));
       d.setDate(d.getDate() + 1);
-    }
+    }*/
 
-    return weekDays;
+    return ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
   }
 
   getIsSelected(date: string): boolean {

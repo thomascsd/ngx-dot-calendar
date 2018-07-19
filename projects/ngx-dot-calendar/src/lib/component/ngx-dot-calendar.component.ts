@@ -1,4 +1,12 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+  OnChanges,
+  SimpleChanges
+} from '@angular/core';
 import * as moment from 'moment';
 import { DateRenderer } from '../interfaces/DateRenderer';
 import { DateContent } from '../interfaces/DateContent';
@@ -45,15 +53,20 @@ export class NgxDotCalendarComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    if (this.maxYear < this.minYear) {
-      throw new Error(
-        'Invalid attribute value: maxYear must be greater than or equal to minYear'
-      );
-    }
-
     if (this.idatePickerBinding !== '') {
       this.selectDate(this.idatePickerBinding);
     }
+
+    this.init();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['dateContents']) {
+      this.init();
+    }
+  }
+
+  private init() {
     this.formatDateStr();
     this.setCalendarProps();
     this.renderCalendar();
@@ -143,43 +156,43 @@ export class NgxDotCalendarComponent implements OnInit {
     const firstDay = moment(calendarIdentifier + '-01').format('dddd');
     const lastDay = moment(calendarIdentifier + '-' + lastDate).format('dddd');
     switch (firstDay) {
-      case 'Tuesday':
+      case 'Monday':
         calendarDate.unshift([null]);
         break;
-      case 'Wednesday':
+      case 'Tuesday':
         calendarDate.unshift([null], [null]);
         break;
-      case 'Thursday':
+      case 'Wednesday':
         calendarDate.unshift([null], [null], [null]);
         break;
-      case 'Friday':
+      case 'Thursday':
         calendarDate.unshift([null], [null], [null], [null]);
         break;
-      case 'Saturday':
+      case 'Friday':
         calendarDate.unshift([null], [null], [null], [null], [null]);
         break;
-      case 'Sunday':
+      case 'Saturday':
         calendarDate.unshift([null], [null], [null], [null], [null], [null]);
         break;
     }
 
     switch (lastDay) {
-      case 'Saturday':
+      case 'Friday':
         calendarDate.push([null]);
         break;
-      case 'Friday':
+      case 'Thursday':
         calendarDate.push([null], [null]);
         break;
-      case 'Thursday':
+      case 'Wednesday':
         calendarDate.push([null], [null], [null]);
         break;
-      case 'Wednesday':
+      case 'Tuesday':
         calendarDate.push([null], [null], [null], [null]);
         break;
-      case 'Tuesday':
+      case 'Monday':
         calendarDate.push([null], [null], [null], [null], [null]);
         break;
-      case 'Monday':
+      case 'Sunday':
         calendarDate.push([null], [null], [null], [null], [null], [null]);
         break;
     }
@@ -205,14 +218,18 @@ export class NgxDotCalendarComponent implements OnInit {
     return results;
   }
   selectDate(event: string): void {
+    this.selectDate2(event);
+
+    // Emit selection event
+    this.getSelectedDate.emit(this.dateOutput);
+  }
+
+  selectDate2(event: string) {
     this.selectedDate = moment(event).format('YYYY-MM-DD');
     this.formatDateStr();
     this.dateOutput = moment(this.selectedDate)
       .locale(this.locale)
       .format(this.format);
-
-    // Emit selection event
-    this.getSelectedDate.emit(this.dateOutput);
   }
 
   changeCalendar(direction: string): void {
@@ -244,7 +261,7 @@ export class NgxDotCalendarComponent implements OnInit {
   }
 
   viewBack(event: string): void {
-    this.selectDate(event);
+    this.selectDate2(event);
     this.setCalendarProps();
     this.renderCalendar();
     this.viewOptions();
