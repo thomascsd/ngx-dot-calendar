@@ -2,11 +2,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: 'dot-calendar-dates',
-  templateUrl: './dot-calendar-dates.component.html',
-  styleUrls: ['dot-calendar-dates.scss']
+  selector: 'ngx-dot-calendar-dates',
+  templateUrl: './ngx-dot-calendar-dates.component.html',
+  styleUrls: ['ngx-dot-calendar-dates.scss']
 })
-export class DotCalendarDatesComponent implements OnInit {
+export class NgxDotCalendarDatesComponent implements OnInit {
   dateSymbol: string[];
 
   @Input() weeks: number[];

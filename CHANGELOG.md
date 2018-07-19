@@ -1,29 +1,19 @@
-## [16 April 2017]
-### Added
-- add minDate attribute
-- add maxDate attribute
+## [2018/07/18]
 
-## [15 April 2017]
 ### Changed
-- change dayLabels type from string to Array<string>
-- change onSelect event name to getSelectedDate
+
+- upgrade to Angular V6
 
 ### Added
+
 - add disabled attribute
 - method openDatePicker exposed
 - method closeDatePicker exposed
 - add disableDays attribute
 
-## [14 April 2017]
-### Changed
-- from now on css will be replaced by sass (for development)
-- rename attribute customSymbol to dayLabels
+## [2017/12/20]
 
 ### Added
-- bourbon (http://bourbon.io) for development
-- add sundayHighlight attribute 
-- add maxYear attribute
-- add minYear attribute
 
-### Fixed
-- reset view to calendar after click cancel on select year option
+- suport RWD
+- add dataContent

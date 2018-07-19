@@ -13,11 +13,11 @@ import locale = moment.locale;
 
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: 'dot-calendar-years',
-  templateUrl: './dot-calendar-years.component.html',
-  styleUrls: ['dot-calendar-years.scss']
+  selector: 'ngx-dot-calendar-years',
+  templateUrl: './ngx-dot-calendar-years.component.html',
+  styleUrls: ['ngx-dot-calendar-years.scss']
 })
-export class DotCalendarYearsComponent implements OnInit, AfterViewInit {
+export class NgxDotCalendarYearsComponent implements OnInit, AfterViewInit {
   months: Array<Object>;
 
   @Input() locale: string;

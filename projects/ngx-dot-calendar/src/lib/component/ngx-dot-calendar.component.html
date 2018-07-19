@@ -6,7 +6,7 @@
     <div [ngClass]="['idatepicker-dialog-wrapper', viewCalendar ? 'active' : '']">
       <div class="idatepicker-dialog-wrapper-inner" *ngIf="viewCalendar">
         <div class="idatepicker-dialog-wrapper-container">
-        <!--  <div class="idatepicker-dialog-wrapper-container-left">
+          <!--  <div class="idatepicker-dialog-wrapper-container-left">
             <div>
               <div>
                 <div style="cursor: pointer;">{{selectedYear}}</div>
@@ -45,12 +45,12 @@
                   </div>
                 </button>
               </div>
-              <dot-calendar-dates *ngIf="changeViewOptions === false" [locale]="locale" [weeks]="weeks" [dates]="dates" [selectedDate]="selectedDate"
+              <ngx-dot-calendar-dates *ngIf="changeViewOptions === false" [locale]="locale" [weeks]="weeks" [dates]="dates" [selectedDate]="selectedDate"
                 [sundayHighlight]="sundayHighlight" (setSelectedDate)="selectDate($event)">
-              </dot-calendar-dates>
-              <dot-calendar-years [locale]="locale" [yearCalendar]="yearCalendar" [minYear]="minYear" [maxYear]="maxYear" (showCalendar)="viewBack($event)"
+              </ngx-dot-calendar-dates>
+              <ngx-dot-calendar-years [locale]="locale" [yearCalendar]="yearCalendar" [minYear]="minYear" [maxYear]="maxYear" (showCalendar)="viewBack($event)"
                 *ngIf="changeViewOptions === true">
-              </dot-calendar-years>
+              </ngx-dot-calendar-years>
             </div>
           </div>
         </div>

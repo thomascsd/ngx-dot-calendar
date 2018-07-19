@@ -5,11 +5,11 @@ import { DateContent } from '../interfaces/DateContent';
 
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: 'dot-calendar',
-  templateUrl: './dot-calendar.component.html',
-  styleUrls: ['dot-calendar.scss']
+  selector: 'ngx-dot-calendar',
+  templateUrl: './ngx-dot-calendar.component.html',
+  styleUrls: ['ngx-dot-calendar.scss']
 })
-export class DotCalendarComponent implements OnInit {
+export class NgxDotCalendarComponent implements OnInit {
   selectedDate: string = moment().format('YYYY-MM-DD');
   dateOutput: string;
   selectedYear: string;
