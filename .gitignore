@@ -50,3 +50,4 @@ config/
 dist_dev/
 .DS_Store
 .idea/
+/dist

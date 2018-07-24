@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DateContent } from './calendar/interfaces/DateContent';
+import { DateContent } from 'ngx-dot-calendar';
 
 @Component({
   selector: 'app-root',
@@ -13,11 +13,11 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.dateContents = [
       {
-        day: '2017-12-01',
+        day: '2018-07-01',
         hasContent: true
       },
       {
-        day: '2017-12-12',
+        day: '2018-07-12',
         hasContent: true
       }
     ];

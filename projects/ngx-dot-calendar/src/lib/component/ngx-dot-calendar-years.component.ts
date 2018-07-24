@@ -8,8 +8,9 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-import * as moment from 'moment';
-import locale = moment.locale;
+import * as momentNs from 'moment';
+const moment = momentNs;
+// import locale = moment.locale;
 
 @Component({
   // tslint:disable-next-line:component-selector

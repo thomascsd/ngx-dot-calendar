@@ -1,18 +1,15 @@
-@import '~bourbon/app/assets/stylesheets/_bourbon';
+@import '~bourbon/core/_bourbon.scss';
 @import 'var.scss';
-
 $pc-media: 960px;
 $pcs-media: 959px;
 $pad-media: 760px;
 $pads-media: 759px;
 $phone-media: 480px;
 $phones-media: 479px;
-
 @mixin myMixin {
-  @include size(100% 100%);
+  @include size(100%);
   @include position(absolute, 0 null null 0);
-  transition: transform 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms,
-    opacity 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  transition: transform 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms, opacity 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
 }
 
 //PC
@@ -21,18 +18,21 @@ $phones-media: 479px;
     @content;
   }
 }
+
 //Large Tablet
 @mixin pad-width() {
   @media all and (min-width: $pad-media) and (max-width: $pcs-media) {
     @content;
   }
 }
+
 //Small Tablet
 @mixin small-pad-width() {
   @media all and (min-width: $phone-media) and (max-width: $pads-media) {
     @content;
   }
 }
+
 //Phone
 @mixin phone-width() {
   @media all and (max-width: $phones-media) {
@@ -62,7 +62,7 @@ $phones-media: 479px;
   .input {
     padding: 0;
     position: relative;
-    @include size(100% 100%);
+    @include size(100%);
     border: none;
     outline: none;
     background-color: rgba(0, 0, 0, 0);
@@ -107,21 +107,19 @@ $phones-media: 479px;
   z-index: 2000;
   opacity: 0;
   &.active {
-    opacity: 1;
-    @include transition(all 450ms $ease-in-out-expo);
+    opacity: 1; // @include transition(all 450ms $ease-in-out-expo);
+    transition: all 450ms ease-in-out;
   }
 }
 
 .idatepicker-dialog-wrapper-inner {
   color: $black;
   background-color: rgb(255, 255, 255);
-  transition: transform 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms,
-    opacity 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  transition: transform 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms, opacity 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   box-sizing: border-box;
   font-family: $font;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px,
-    rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+  box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
   border-radius: 2px;
   z-index: 2100;
   opacity: 1;
@@ -139,11 +137,9 @@ $phones-media: 479px;
   @include small-pad-width {
     min-width: 475px;
   }
-
   @include phone-width {
     min-width: 300px;
   }
-
   .idatepicker-dialog-wrapper-container {
     @include pc-width {
       width: 768px;
@@ -154,16 +150,13 @@ $phones-media: 479px;
     @include small-pad-width {
       width: 475px;
     }
-
     @include phone-width {
       width: 300px;
     }
-
     color: $black;
     user-select: none;
-
     .idatepicker-dialog-wrapper-container-left {
-      @include size(165px 330px);
+      @include size(165px, 330px);
       float: left;
       font-weight: 700;
       display: inline-block;
@@ -174,7 +167,7 @@ $phones-media: 479px;
       color: $white;
       padding: 20px;
       box-sizing: border-box;
-      > div {
+      >div {
         position: relative;
         overflow: hidden;
         transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
@@ -187,7 +180,7 @@ $phones-media: 479px;
           opacity: 0.7;
         }
         &:last-child {
-          @include size(100% 100%);
+          @include size(100%);
           display: block;
           font-size: 36px;
           line-height: 36px;
@@ -217,7 +210,7 @@ $phones-media: 479px;
           justify-content: space-between;
           background-color: inherit;
           height: 48px;
-          > button {
+          >button {
             background: none;
             border: 10px;
             box-sizing: border-box;
@@ -232,34 +225,33 @@ $phones-media: 479px;
             transform: translate(0px, 0px);
             position: relative;
             overflow: visible;
-            @include size(48px 48px);
-            > div > svg {
+            @include size(48px);
+            >div>svg {
               display: inline-block;
               color: $black;
               fill: currentcolor;
-              @include size(24px 24px);
+              @include size(24px);
               user-select: none;
             }
           }
-          > div {
+          >div {
             position: relative;
             overflow: hidden;
-            @include size(100% 100%);
+            @include size(100%);
             font-size: 14px;
             font-weight: 500;
             text-align: left;
-            > div {
+            >div {
               @include position(absolute, 0 null null 0);
-              @include size(100% 100%);
-              transition: transform 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms,
-                opacity 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-              > div {
+              @include size(100%);
+              transition: transform 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms, opacity 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+              >div {
                 height: inherit;
                 padding-top: 12px;
-                > span {
+                >span {
                   cursor: pointer;
                   &::after {
-                    @include size(24px 24px);
+                    @include size(24px);
                     content: '';
                     position: absolute;
                     color: $black;
@@ -303,7 +295,7 @@ $phones-media: 479px;
           text-align: center;
           max-height: 36px;
           user-select: none;
-          > div > span {
+          >div>span {
             position: relative;
             padding-left: 16px;
             padding-right: 16px;

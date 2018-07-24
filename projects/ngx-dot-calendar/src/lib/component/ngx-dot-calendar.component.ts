@@ -7,7 +7,8 @@ import {
   OnChanges,
   SimpleChanges
 } from '@angular/core';
-import * as moment from 'moment';
+import * as momentNs from 'moment';
+const moment = momentNs;
 import { DateRenderer } from '../interfaces/DateRenderer';
 import { DateContent } from '../interfaces/DateContent';
 
@@ -17,7 +18,7 @@ import { DateContent } from '../interfaces/DateContent';
   templateUrl: './ngx-dot-calendar.component.html',
   styleUrls: ['ngx-dot-calendar.scss']
 })
-export class NgxDotCalendarComponent implements OnInit {
+export class NgxDotCalendarComponent implements OnInit, OnChanges {
   selectedDate: string = moment().format('YYYY-MM-DD');
   dateOutput: string;
   selectedYear: string;
@@ -132,7 +133,7 @@ export class NgxDotCalendarComponent implements OnInit {
         const disabled =
           moment(dateStr) < this.minDate ||
           moment(dateStr) > this.maxDate ||
-          arr.includes(dayOfWeek);
+          arr.indexOf(dayOfWeek) !== -1;
         const hasContents = this.dateContents
           .filter(item => item.day === dateStr)
           .map(item => item.hasContent);
