@@ -6,7 +6,8 @@
   height: 6px;
   padding: 0;
   position: absolute;
-  left: 6px;
+  left: 18px;
+  top: 24px;
 }
 
 .idatepicker-dialog-date-days {
@@ -107,6 +108,18 @@
           >span.circle-blue {
             @include circle-block;
             background-color: #2196f3;
+          }
+          >span.circle-green {
+            @include circle-block;
+            background-color: #4caf50;
+          }
+          >span.circle-purple {
+            @include circle-block;
+            background-color: #9C27B0;
+          }
+          >span.circle-brown {
+            @include circle-block;
+            background-color: #795548;
           }
           >div {
             background-color: rgb(7, 151, 225);

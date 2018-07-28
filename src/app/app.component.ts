@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DateContent } from 'ngx-dot-calendar';
+import { DateContent, colorTypes } from 'ngx-dot-calendar';
 
 @Component({
   selector: 'app-root',
@@ -14,11 +14,13 @@ export class AppComponent implements OnInit {
     this.dateContents = [
       {
         day: '2018-07-01',
-        hasContent: true
+        hasContent: true,
+        color: colorTypes.red
       },
       {
         day: '2018-07-12',
-        hasContent: true
+        hasContent: true,
+        color: colorTypes.blue
       }
     ];
   }

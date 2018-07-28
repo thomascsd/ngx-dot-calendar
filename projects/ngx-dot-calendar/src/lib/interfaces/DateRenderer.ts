@@ -4,4 +4,5 @@ export interface DateRenderer {
   meta: string;
   disabled: boolean;
   hasContent: boolean;
+  colorClassName: string;
 }

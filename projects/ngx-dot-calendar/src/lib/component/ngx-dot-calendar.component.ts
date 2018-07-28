@@ -10,7 +10,7 @@ import {
 import * as momentNs from 'moment';
 const moment = momentNs;
 import { DateRenderer } from '../interfaces/DateRenderer';
-import { DateContent } from '../interfaces/DateContent';
+import { DateContent, colorTypes } from '../interfaces/DateContent';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -134,13 +134,20 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
           moment(dateStr) < this.minDate ||
           moment(dateStr) > this.maxDate ||
           arr.indexOf(dayOfWeek) !== -1;
-        const hasContents = this.dateContents
+        const contents = this.dateContents
           .filter(item => item.day === dateStr)
-          .map(item => item.hasContent);
+          .map(item => {
+            return {
+              hasContent: item.hasContent,
+              colorClassName: this.toColorClassName(item.color)
+            };
+          });
         let hasContent = false;
+        let colorClassName = '';
 
-        if (hasContents.length > 0) {
-          hasContent = hasContents[0];
+        if (contents.length > 0) {
+          hasContent = contents[0].hasContent;
+          colorClassName = contents[0].colorClassName;
         }
 
         return [
@@ -149,7 +156,8 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
             date: i + 1,
             meta: dateStr,
             disabled: disabled,
-            hasContent: hasContent
+            hasContent: hasContent,
+            colorClassName: colorClassName
           } as DateRenderer
         ];
       });
@@ -266,5 +274,9 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
     this.setCalendarProps();
     this.renderCalendar();
     this.viewOptions();
+  }
+
+  toColorClassName(color: colorTypes) {
+    return `circle-${colorTypes[color]}`;
   }
 }

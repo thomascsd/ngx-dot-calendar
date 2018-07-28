@@ -1,139 +1,97 @@
 <div class="idatepicker-dialog-date-days">
-    <span *ngFor="let symbol of dateSymbol">{{symbol}}</span>
+  <span *ngFor="let symbol of dateSymbol">{{symbol}}</span>
 </div>
 <div class="idatepicker-dialog-date-dates">
+  <div>
     <div>
-        <div>
-            <div *ngFor="let w of weeks">
-                <span *ngIf="dates[w][0][0] === null"></span>
-                <button
-                    (click)="!dates[w][0][0].disabled ? selectDate(dates[w][0][0].meta) : null"
-                    *ngIf="dates[w][0][0] !== null"
-                    tabindex="0"
-                    type="button"
-                    idate
-                    [ngClass]="{
+      <div *ngFor="let w of weeks">
+        <span *ngIf="dates[w][0][0] === null"></span>
+        <button (click)="!dates[w][0][0].disabled ? selectDate(dates[w][0][0].meta) : null" *ngIf="dates[w][0][0] !== null" tabindex="0"
+          type="button" idate [ngClass]="{
                         'selected-day': getIsSelected(dates[w][0][0].meta),
                         'disabled': dates[w][0][0].disabled
-                    }"
-                >
-                    <div *ngIf="!dates[w][0][0].disabled"></div>
-                    <span [ngClass]="{ 'disabled': dates[w][0][0].disabled }">
-                      {{dates[w][0][0].date}}
-                    </span>
-                    <br>
-                    <span *ngIf="dates[w][0][0] && dates[w][0][0].hasContent" class="circle-red"></span>
-                </button>
+                    }">
+          <div *ngIf="!dates[w][0][0].disabled"></div>
+          <span [ngClass]="{ 'disabled': dates[w][0][0].disabled }">
+            {{dates[w][0][0].date}}
+          </span>
+          <br>
+          <span *ngIf="dates[w][0][0] && dates[w][0][0].hasContent" [ngClass]="dates[w][0][0].colorClassName"></span>
+        </button>
 
-                <span *ngIf="dates[w][1][0] === null"></span>
-                <button
-                    (click)="!dates[w][1][0].disabled ? selectDate(dates[w][1][0].meta) : null"
-                    *ngIf="dates[w][1][0] !== null"
-                    tabindex="0"
-                    type="button"
-                    idate
-                    [ngClass]="{
+        <span *ngIf="dates[w][1][0] === null"></span>
+        <button (click)="!dates[w][1][0].disabled ? selectDate(dates[w][1][0].meta) : null" *ngIf="dates[w][1][0] !== null" tabindex="0"
+          type="button" idate [ngClass]="{
                         'selected-day': getIsSelected(dates[w][1][0].meta),
                         'disabled': dates[w][1][0].disabled
-                    }"
-                >
-                    <div *ngIf="!dates[w][1][0].disabled"></div>
-                    <span [ngClass]="{ 'disabled': dates[w][1][0].disabled }">
-                      {{dates[w][1][0].date}}</span>
-                      <br>
-                      <span *ngIf="dates[w][1][0] && dates[w][1][0].hasContent" class="circle-red"></span>
-                </button>
+                    }">
+          <div *ngIf="!dates[w][1][0].disabled"></div>
+          <span [ngClass]="{ 'disabled': dates[w][1][0].disabled }">
+            {{dates[w][1][0].date}}</span>
+          <br>
+          <span *ngIf="dates[w][1][0] && dates[w][1][0].hasContent" [ngClass]="dates[w][1][0].colorClassName"></span>
+        </button>
 
-                <span *ngIf="dates[w][2][0] === null"></span>
-                <button
-                    (click)="!dates[w][2][0].disabled ? selectDate(dates[w][2][0].meta) : null"
-                    *ngIf="dates[w][2][0] !== null"
-                    tabindex="0"
-                    type="button"
-                    idate
-                    [ngClass]="{
+        <span *ngIf="dates[w][2][0] === null"></span>
+        <button (click)="!dates[w][2][0].disabled ? selectDate(dates[w][2][0].meta) : null" *ngIf="dates[w][2][0] !== null" tabindex="0"
+          type="button" idate [ngClass]="{
                         'selected-day': getIsSelected(dates[w][2][0].meta),
                         'disabled': dates[w][2][0].disabled
-                    }"
-                >
-                    <div *ngIf="!dates[w][2][0].disabled"></div>
-                    <span [ngClass]="{ 'disabled': dates[w][2][0].disabled }">{{dates[w][2][0].date}}</span>
-                    <br>
-                    <span *ngIf="dates[w][2][0] && dates[w][2][0].hasContent" class="circle-red"></span>
-                </button>
+                    }">
+          <div *ngIf="!dates[w][2][0].disabled"></div>
+          <span [ngClass]="{ 'disabled': dates[w][2][0].disabled }">{{dates[w][2][0].date}}</span>
+          <br>
+          <span *ngIf="dates[w][2][0] && dates[w][2][0].hasContent" [ngClass]="dates[w][2][0].colorClassName"></span>
+        </button>
 
-                <span *ngIf="dates[w][3][0] === null"></span>
-                <button
-                    (click)="!dates[w][3][0].disabled ? selectDate(dates[w][3][0].meta) : null"
-                    *ngIf="dates[w][3][0] !== null"
-                    tabindex="0"
-                    type="button"
-                    idate
-                    [ngClass]="{
+        <span *ngIf="dates[w][3][0] === null"></span>
+        <button (click)="!dates[w][3][0].disabled ? selectDate(dates[w][3][0].meta) : null" *ngIf="dates[w][3][0] !== null" tabindex="0"
+          type="button" idate [ngClass]="{
                         'selected-day': getIsSelected(dates[w][3][0].meta),
                         'disabled': dates[w][3][0].disabled
-                    }"
-                >
-                    <div *ngIf="!dates[w][3][0].disabled"></div>
-                    <span [ngClass]="{ 'disabled': dates[w][3][0].disabled }">{{dates[w][3][0].date}}</span>
-                    <br>
-                    <span *ngIf="dates[w][3][0] && dates[w][3][0].hasContent" class="circle-red"></span>
-                </button>
+                    }">
+          <div *ngIf="!dates[w][3][0].disabled"></div>
+          <span [ngClass]="{ 'disabled': dates[w][3][0].disabled }">{{dates[w][3][0].date}}</span>
+          <br>
+          <span *ngIf="dates[w][3][0] && dates[w][3][0].hasContent" [ngClass]="dates[w][3][0].colorClassName"></span>
+        </button>
 
-                <span *ngIf="dates[w][4][0] === null"></span>
-                <button
-                    (click)="!dates[w][4][0].disabled ? selectDate(dates[w][4][0].meta) : null"
-                    *ngIf="dates[w][4][0] !== null"
-                    tabindex="0"
-                    type="button"
-                    idate
-                    [ngClass]="{
+        <span *ngIf="dates[w][4][0] === null"></span>
+        <button (click)="!dates[w][4][0].disabled ? selectDate(dates[w][4][0].meta) : null" *ngIf="dates[w][4][0] !== null" tabindex="0"
+          type="button" idate [ngClass]="{
                         'selected-day': getIsSelected(dates[w][4][0].meta),
                         'disabled': dates[w][4][0].disabled
-                    }"
-                >
-                    <div *ngIf="!dates[w][4][0].disabled"></div>
-                    <span [ngClass]="{ 'disabled': dates[w][4][0].disabled }">{{dates[w][4][0].date}}</span>
-                    <br>
-                    <span *ngIf="dates[w][4][0] && dates[w][4][0].hasContent" class="circle-red"></span>
-                </button>
+                    }">
+          <div *ngIf="!dates[w][4][0].disabled"></div>
+          <span [ngClass]="{ 'disabled': dates[w][4][0].disabled }">{{dates[w][4][0].date}}</span>
+          <br>
+          <span *ngIf="dates[w][4][0] && dates[w][4][0].hasContent" [ngClass]="dates[w][4][0].colorClassName"></span>
+        </button>
 
-                <span *ngIf="dates[w][5][0] === null"></span>
-                <button
-                    (click)="!dates[w][5][0].disabled ? selectDate(dates[w][5][0].meta) : null"
-                    *ngIf="dates[w][5][0] !== null"
-                    tabindex="0"
-                    type="button"
-                    idate
-                    [ngClass]="{
+        <span *ngIf="dates[w][5][0] === null"></span>
+        <button (click)="!dates[w][5][0].disabled ? selectDate(dates[w][5][0].meta) : null" *ngIf="dates[w][5][0] !== null" tabindex="0"
+          type="button" idate [ngClass]="{
                         'selected-day': getIsSelected(dates[w][5][0].meta),
                         'disabled': dates[w][5][0].disabled
-                    }"
-                >
-                    <div *ngIf="!dates[w][5][0].disabled"></div>
-                    <span [ngClass]="{ 'disabled': dates[w][5][0].disabled }">{{dates[w][5][0].date}}</span>
-                    <br>
-                    <span *ngIf="dates[w][5][0] && dates[w][5][0].hasContent" class="circle-red"></span>
-                </button>
+                    }">
+          <div *ngIf="!dates[w][5][0].disabled"></div>
+          <span [ngClass]="{ 'disabled': dates[w][5][0].disabled }">{{dates[w][5][0].date}}</span>
+          <br>
+          <span *ngIf="dates[w][5][0] && dates[w][5][0].hasContent" [ngClass]="dates[w][5][0].colorClassName"></span>
+        </button>
 
-                <span *ngIf="dates[w][6][0] === null"></span>
-                <button
-                    (click)="!dates[w][6][0].disabled ? selectDate(dates[w][6][0].meta) : null"
-                    *ngIf="dates[w][6][0] !== null"
-                    tabindex="0"
-                    type="button"
-                    idate
-                    [ngClass]="{
+        <span *ngIf="dates[w][6][0] === null"></span>
+        <button (click)="!dates[w][6][0].disabled ? selectDate(dates[w][6][0].meta) : null" *ngIf="dates[w][6][0] !== null" tabindex="0"
+          type="button" idate [ngClass]="{
                         'selected-day': getIsSelected(dates[w][6][0].meta),
                         'disabled': dates[w][6][0].disabled
-                    }"
-                >
-                    <div *ngIf="!dates[w][6][0].disabled"></div>
-                    <span [ngClass]="{ 'sunday': sundayHighlight, 'disabled': dates[w][6][0].disabled }">{{dates[w][6][0].date}}</span>
-                    <br>
-                    <span *ngIf="dates[w][6][0] && dates[w][6][0].hasContent" class="circle-red"></span>
-                </button>
-            </div>
-        </div>
+                    }">
+          <div *ngIf="!dates[w][6][0].disabled"></div>
+          <span [ngClass]="{ 'sunday': sundayHighlight, 'disabled': dates[w][6][0].disabled }">{{dates[w][6][0].date}}</span>
+          <br>
+          <span *ngIf="dates[w][6][0] && dates[w][6][0].hasContent" [ngClass]="dates[w][6][0].colorClassName"></span>
+        </button>
+      </div>
     </div>
+  </div>
 </div>
