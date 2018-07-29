@@ -7,20 +7,41 @@ import { DateContent, colorTypes } from 'ngx-dot-calendar';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  date = '2017/12/01';
   dateContents: DateContent[];
 
   ngOnInit(): void {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth() + 1;
+    const dMon = month < 10 ? '0' + month : month.toString();
+
+    console.log(`date:${year}-${dMon}-01`);
+
     this.dateContents = [
       {
-        day: '2018-07-01',
+        day: `${year}-${dMon}-01`,
         hasContent: true,
         color: colorTypes.red
       },
       {
-        day: '2018-07-12',
+        day: `${year}-${dMon}-06`,
         hasContent: true,
         color: colorTypes.blue
+      },
+      {
+        day: `${year}-${dMon}-11`,
+        hasContent: true,
+        color: colorTypes.green
+      },
+      {
+        day: `${year}-${dMon}-17`,
+        hasContent: true,
+        color: colorTypes.purple
+      },
+      {
+        day: `${year}-${dMon}-23`,
+        hasContent: true,
+        color: colorTypes.brown
       }
     ];
   }
