@@ -11,6 +11,10 @@ import * as momentNs from 'moment';
 const moment = momentNs;
 import { DateRenderer } from '../interfaces/DateRenderer';
 import { DateContent, colorTypes } from '../interfaces/DateContent';
+import {
+  SelectedDateContext,
+  selectedDateMode
+} from '../interfaces/SelectedDateContext';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -49,7 +53,8 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
   @Input() maxDate: any;
   @Input() dateContents: DateContent[] = [];
 
-  @Output() getSelectedDate: EventEmitter<string> = new EventEmitter();
+  @Output()
+  getSelectedDate: EventEmitter<SelectedDateContext> = new EventEmitter();
 
   constructor() {}
 
@@ -227,20 +232,34 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
     return results;
   }
   selectDate(event: string): void {
-    this.selectDate2(event);
+    this.selectedDateInner(event);
+    const context: SelectedDateContext = {
+      selectedDate: this.dateOutput,
+      selectedDateMode: selectedDateMode.fromDateClicked
+    };
 
     // Emit selection event
-    this.getSelectedDate.emit(this.dateOutput);
+    this.getSelectedDate.emit(context);
   }
 
   selectDate2(event: string) {
+    this.selectedDateInner(event);
+    const context: SelectedDateContext = {
+      selectedDate: this.dateOutput,
+      selectedDateMode: selectedDateMode.fromYearPicker
+    };
+
+    // Emit selection event
+    this.getSelectedDate.emit(context);
+  }
+
+  private selectedDateInner(event: string) {
     this.selectedDate = moment(event).format('YYYY-MM-DD');
     this.formatDateStr();
     this.dateOutput = moment(this.selectedDate)
       .locale(this.locale)
       .format(this.format);
   }
-
   changeCalendar(direction: string): void {
     if (direction === 'prev') {
       if (this.monthCalendar === 1) {
