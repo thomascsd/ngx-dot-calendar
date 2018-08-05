@@ -18,10 +18,10 @@
     "baseUrl": "./",
     "paths": {
       "ngx-dot-calendar": [
-        "../dist/ngx-dot-calendar"
+        "ngx-dot-calendar-dist/ngx-dot-calendar"
       ],
       "ngx-dot-calendar/*": [
-        "../dist/ngx-dot-calendar/*"
+        "ngx-dot-calendar-dist/ngx-dot-calendar/*"
       ]
     }
   }
