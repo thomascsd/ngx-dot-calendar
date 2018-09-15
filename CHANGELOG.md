@@ -2,14 +2,13 @@
 
 ### Changed
 
-- upgrade to Angular V6
+- upgrade to Angular v6
+- uprade to bouboun v5.1
 
 ### Added
 
-- add disabled attribute
-- method openDatePicker exposed
-- method closeDatePicker exposed
-- add disableDays attribute
+- add color types
+- set color based on data type
 
 ## [2017/12/20]
 
