@@ -5,8 +5,8 @@ The project fork from [az-idatepicker
 
 ## Feature
 
-- support RWD
-- display dot based on whelter has data
+- Ssupport RWD
+- Display dot based on whether has data
 
 # Install
 

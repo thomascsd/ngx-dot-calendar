@@ -8,9 +8,7 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-import * as momentNs from 'moment';
-const moment = momentNs;
-// import locale = moment.locale;
+import * as dayjs from 'dayjs';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -39,7 +37,7 @@ export class NgxDotCalendarYearsComponent implements OnInit, AfterViewInit {
       .fill(0)
       .map((e, i) => {
         return {
-          val: moment()
+          val: dayjs()
             .locale(this.locale)
             .month(i)
             .format('MMM'),
@@ -62,7 +60,7 @@ export class NgxDotCalendarYearsComponent implements OnInit, AfterViewInit {
 
   backToCalendar(year: number, month: number): void {
     const m_ = month < 10 ? '0' + month.toString() : month.toString();
-    const selectedDate = moment(year.toString() + '-' + m_ + '-01').format(
+    const selectedDate = dayjs(year.toString() + '-' + m_ + '-01').format(
       'YYYY-MM-DD'
     );
     this.showCalendar.emit(selectedDate);

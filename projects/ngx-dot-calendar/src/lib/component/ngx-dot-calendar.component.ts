@@ -7,8 +7,7 @@ import {
   OnChanges,
   SimpleChanges
 } from '@angular/core';
-import * as momentNs from 'moment';
-const moment = momentNs;
+import * as dayjs from 'dayjs';
 import { DateRenderer } from '../interfaces/DateRenderer';
 import { DateContent, colorTypes } from '../interfaces/DateContent';
 import {
@@ -23,7 +22,7 @@ import {
   styleUrls: ['ngx-dot-calendar.scss']
 })
 export class NgxDotCalendarComponent implements OnInit, OnChanges {
-  selectedDate: string = moment().format('YYYY-MM-DD');
+  selectedDate: string = dayjs(new Date()).format('YYYY-MM-DD');
   dateOutput: string;
   selectedYear: string;
   selectedDay: string;
@@ -84,7 +83,7 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
   }
 
   renderCalendar(): void {
-    this.monthCalendarStr = moment()
+    this.monthCalendarStr = dayjs(new Date())
       .locale(this.locale)
       .month(this.monthCalendar - 1)
       .format('MMMM');
@@ -97,24 +96,24 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
   }
 
   formatDateStr(): void {
-    this.selectedDay = moment(this.selectedDate)
+    this.selectedDay = dayjs(this.selectedDate)
       .locale(this.locale)
       .format('DD');
 
-    this.selectedDayStr = moment(this.selectedDate)
+    this.selectedDayStr = dayjs(this.selectedDate)
       .locale(this.locale)
       .format('ddd');
 
-    this.selectedMonth = moment(this.selectedDate)
+    this.selectedMonth = dayjs(this.selectedDate)
       .locale(this.locale)
       .format('MM');
 
-    this.selectedMonthStr = moment()
+    this.selectedMonthStr = dayjs()
       .locale(this.locale)
       .month(parseInt(this.selectedMonth, 10) - 1)
       .format('MMM');
 
-    this.selectedYear = moment(this.selectedDate)
+    this.selectedYear = dayjs(this.selectedDate)
       .locale(this.locale)
       .format('YYYY');
   }
@@ -132,12 +131,12 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
         const date = (i + 1).toString();
         const dateStr =
           calendarIdentifier + '-' + (date.length === 1 ? '0' + date : date);
-        const dayName = moment(dateStr).format('dddd');
-        const dayOfWeek = parseInt(moment(dateStr).format('e'), 10);
+        const dayName = dayjs(dateStr).format('dddd');
+        const dayOfWeek = parseInt(dayjs(dateStr).format('e'), 10);
         const arr = this.disableDays;
         const disabled =
-          moment(dateStr) < this.minDate ||
-          moment(dateStr) > this.maxDate ||
+          dayjs(dateStr) < this.minDate ||
+          dayjs(dateStr) > this.maxDate ||
           arr.indexOf(dayOfWeek) !== -1;
         const contents = this.dateContents
           .filter(item => item.day === dateStr)
@@ -167,8 +166,8 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
         ];
       });
 
-    const firstDay = moment(calendarIdentifier + '-01').format('dddd');
-    const lastDay = moment(calendarIdentifier + '-' + lastDate).format('dddd');
+    const firstDay = dayjs(calendarIdentifier + '-01').format('dddd');
+    const lastDay = dayjs(calendarIdentifier + '-' + lastDate).format('dddd');
     switch (firstDay) {
       case 'Monday':
         calendarDate.unshift([null]);
@@ -216,7 +215,7 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
 
   getLastDate(): number {
     return parseInt(
-      moment([this.yearCalendar, 0, 31])
+      dayjs([this.yearCalendar, 0, 31])
         .month(this.monthCalendar - 1)
         .format('DD'),
       10
@@ -254,9 +253,9 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
   }
 
   private selectedDateInner(event: string) {
-    this.selectedDate = moment(event).format('YYYY-MM-DD');
+    this.selectedDate = dayjs(event).format('YYYY-MM-DD');
     this.formatDateStr();
-    this.dateOutput = moment(this.selectedDate)
+    this.dateOutput = dayjs(this.selectedDate)
       .locale(this.locale)
       .format(this.format);
   }
