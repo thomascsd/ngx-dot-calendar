@@ -8,7 +8,8 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-import * as dayjs from 'dayjs';
+import * as dayjsNs from 'dayjs';
+const dayjs = dayjsNs;
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -19,7 +20,6 @@ import * as dayjs from 'dayjs';
 export class NgxDotCalendarYearsComponent implements OnInit, AfterViewInit {
   months: Array<Object>;
 
-  @Input() locale: string;
   @Input() yearCalendar: string;
   @Input() minYear: number;
   @Input() maxYear: number;
@@ -38,8 +38,7 @@ export class NgxDotCalendarYearsComponent implements OnInit, AfterViewInit {
       .map((e, i) => {
         return {
           val: dayjs()
-            .locale(this.locale)
-            .month(i)
+            .set('month', i)
             .format('MMM'),
           key: i + 1
         };

@@ -7,7 +7,8 @@ import {
   OnChanges,
   SimpleChanges
 } from '@angular/core';
-import * as dayjs from 'dayjs';
+import * as dayjsNs from 'dayjs';
+const dayjs = dayjsNs;
 import { DateRenderer } from '../interfaces/DateRenderer';
 import { DateContent, colorTypes } from '../interfaces/DateContent';
 import {
@@ -38,8 +39,6 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
   viewCalendar = true;
   now = new Date();
 
-  @Input() dayLabels: string[];
-  @Input() locale = 'en-ca';
   @Input() format = 'YYYY-MM-DD';
   @Input() id = '';
   @Input() idatePickerBinding: any = '';
@@ -84,8 +83,7 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
 
   renderCalendar(): void {
     this.monthCalendarStr = dayjs(new Date())
-      .locale(this.locale)
-      .month(this.monthCalendar - 1)
+      .set('month', this.monthCalendar - 1)
       .format('MMMM');
 
     this.dates = this.populateDate();
@@ -96,26 +94,19 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
   }
 
   formatDateStr(): void {
-    this.selectedDay = dayjs(this.selectedDate)
-      .locale(this.locale)
-      .format('DD');
+    console.log(`selectedDate:${this.selectedDate}`);
 
-    this.selectedDayStr = dayjs(this.selectedDate)
-      .locale(this.locale)
-      .format('ddd');
+    this.selectedDay = dayjs(this.selectedDate).format('DD');
 
-    this.selectedMonth = dayjs(this.selectedDate)
-      .locale(this.locale)
-      .format('MM');
+    this.selectedDayStr = dayjs(this.selectedDate).format('ddd');
+
+    this.selectedMonth = dayjs(this.selectedDate).format('MM');
 
     this.selectedMonthStr = dayjs()
-      .locale(this.locale)
-      .month(parseInt(this.selectedMonth, 10) - 1)
+      .set('month', parseInt(this.selectedMonth, 10) - 1)
       .format('MMM');
 
-    this.selectedYear = dayjs(this.selectedDate)
-      .locale(this.locale)
-      .format('YYYY');
+    this.selectedYear = dayjs(this.selectedDate).format('YYYY');
   }
 
   populateDate(): Object[] {
@@ -215,8 +206,8 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
 
   getLastDate(): number {
     return parseInt(
-      dayjs([this.yearCalendar, 0, 31])
-        .month(this.monthCalendar - 1)
+      dayjs(new Date(+this.yearCalendar, 0, 31))
+        .set('month', this.monthCalendar - 1)
         .format('DD'),
       10
     );
@@ -255,9 +246,7 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
   private selectedDateInner(event: string) {
     this.selectedDate = dayjs(event).format('YYYY-MM-DD');
     this.formatDateStr();
-    this.dateOutput = dayjs(this.selectedDate)
-      .locale(this.locale)
-      .format(this.format);
+    this.dateOutput = dayjs(this.selectedDate).format(this.format);
   }
   changeCalendar(direction: string): void {
     if (direction === 'prev') {
