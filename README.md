@@ -5,6 +5,8 @@
 The project fork from [az-idatepicker
 ](https://github.com/doenikoe/az-idatepicker)
 
+![Screenshot](https://github.com/thomascsd/ngx-dot-calendar/blob/master/screenshot.png)
+
 ## Feature
 
 - Support RWD
