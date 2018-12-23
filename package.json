@@ -1,12 +1,17 @@
 {
   "name": "ngx-dot-calendar",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "license": "MIT",
   "scripts": {
     "start": "ng serve",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
+  },
+  "homepage": "https://thomascsd.github.io/ngx-dot-calendar/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thomascsd/ngx-dot-calendar.git"
   },
   "dependencies": {
     "@angular/animations": "^7.1.4",
@@ -26,7 +31,7 @@
     "codelyzer": "~4.4.4",
     "core-js": "^2.5.7",
     "dayjs": "^1.7.7",
-    "protractor": "~5.3.2",
+    "protractor": "~5.4.1",
     "rimraf": "^2.6.1",
     "rxjs": "^6.3.3",
     "rxjs-compat": "^6.0.0-rc.0",
@@ -34,8 +39,8 @@
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.11.0",
-    "@angular-devkit/build-ng-packagr": "~0.11.0",
+    "@angular-devkit/build-angular": "~0.11.4",
+    "@angular-devkit/build-ng-packagr": "~0.11.4",
     "angular-cli-ghpages": "^0.5.3",
     "ng-packagr": "^4.4.5",
     "tsickle": ">=0.34.0",
