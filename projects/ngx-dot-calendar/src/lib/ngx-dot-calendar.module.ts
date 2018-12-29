@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { NgxDotCalendarComponent } from './component/ngx-dot-calendar.component';
@@ -8,7 +8,7 @@ import { NgxDotCalendarYearsComponent } from './component/ngx-dot-calendar-years
 import { DateHighlight } from './directive/dateHighlight.directive';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule],
+  imports: [CommonModule, FormsModule],
   declarations: [
     NgxDotCalendarComponent,
     NgxDotCalendarDatesComponent,

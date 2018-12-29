@@ -1,12 +1,14 @@
 {
   "name": "ngx-dot-calendar",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "license": "MIT",
   "scripts": {
     "start": "ng serve",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build:lib": "ng build ngx-dot-calendar --prod",
+    "deploy": "cd ngx-dot-calendar-dist/ngx-dot-calendar && npm publish"
   },
   "homepage": "https://thomascsd.github.io/ngx-dot-calendar/",
   "repository": {
