@@ -13,8 +13,8 @@
     "lib": ["es2017", "dom"],
     "baseUrl": "./",
     "paths": {
-      "ngx-dot-calendar": ["./ngx-dot-calendar-dist/ngx-dot-calendar"],
-      "ngx-dot-calendar/*": ["./ngx-dot-calendar-dist/ngx-dot-calendar/*"]
+      "ngx-dot-calendar": ["./dist/ngx-dot-calendar"],
+      "ngx-dot-calendar/*": ["./dist/ngx-dot-calendar/*"]
     }
   }
 }

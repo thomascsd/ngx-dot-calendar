@@ -8,13 +8,11 @@ import {
   SimpleChanges
 } from '@angular/core';
 import * as dayjsNs from 'dayjs';
+import 'dayjs/plugin/weekday';
 const dayjs = dayjsNs;
 import { DateRenderer } from '../interfaces/DateRenderer';
 import { DateContent, colorTypes } from '../interfaces/DateContent';
-import {
-  SelectedDateContext,
-  selectedDateMode
-} from '../interfaces/SelectedDateContext';
+import { SelectedDateContext, selectedDateMode } from '../interfaces/SelectedDateContext';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -113,17 +111,15 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
     const lastDate = this.getLastDate();
     const monthCalendar = this.monthCalendar.toString();
     const calendarIdentifier =
-      this.yearCalendar +
-      '-' +
-      (monthCalendar.length === 1 ? '0' + monthCalendar : monthCalendar);
+      this.yearCalendar + '-' + (monthCalendar.length === 1 ? '0' + monthCalendar : monthCalendar);
     const calendarDate = Array(lastDate)
       .fill(0)
       .map((e, i) => {
         const date = (i + 1).toString();
-        const dateStr =
-          calendarIdentifier + '-' + (date.length === 1 ? '0' + date : date);
+        const dateStr = calendarIdentifier + '-' + (date.length === 1 ? '0' + date : date);
         const dayName = dayjs(dateStr).format('dddd');
-        const dayOfWeek = parseInt(dayjs(dateStr).format('e'), 10);
+        // const dayOfWeek = parseInt(dayjs(dateStr).format('e'), 10);
+        const dayOfWeek = dayjs(dateStr).weekday();
         const arr = this.disableDays;
         const disabled =
           dayjs(dateStr) < this.minDate ||
