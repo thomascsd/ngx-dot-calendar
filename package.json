@@ -7,8 +7,11 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "build": "ng build --prod",
     "build:lib": "ng build ngx-dot-calendar --prod",
-    "deploy": "cd dist/ngx-dot-calendar && npm publish"
+    "deploy": "cd dist/ngx-dot-calendar && npm publish",
+    "deploy:pages":"npx angular-cli-ghpages --dir=dist/ngx-dot-calendar-web"
+
   },
   "homepage": "https://thomascsd.github.io/ngx-dot-calendar/",
   "repository": {
