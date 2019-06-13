@@ -10,8 +10,7 @@
     "build": "ng build --prod",
     "build:lib": "ng build ngx-dot-calendar --prod",
     "deploy": "cd dist/ngx-dot-calendar && npm publish",
-    "deploy:pages":"npx angular-cli-ghpages --dir=dist/ngx-dot-calendar-web"
-
+    "deploy:pages": "npx angular-cli-ghpages --dir=dist/ngx-dot-calendar-web"
   },
   "homepage": "https://thomascsd.github.io/ngx-dot-calendar/",
   "repository": {
@@ -20,7 +19,7 @@
   },
   "dependencies": {
     "@angular/animations": "^7.1.4",
-    "@angular/cli": "^7.1.4",
+    "@angular/cli": "^8.0.3",
     "@angular/common": "^7.1.4",
     "@angular/compiler": "^7.1.4",
     "@angular/compiler-cli": "^7.1.4",
