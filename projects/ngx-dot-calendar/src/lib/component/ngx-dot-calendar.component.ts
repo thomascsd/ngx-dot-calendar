@@ -8,7 +8,7 @@ import {
   SimpleChanges
 } from '@angular/core';
 import * as dayjsNs from 'dayjs';
-import 'dayjs/plugin/weekday';
+import * as weekDay from 'dayjs/plugin/weekday';
 const dayjs = dayjsNs;
 import { DateRenderer } from '../interfaces/DateRenderer';
 import { DateContent, colorTypes } from '../interfaces/DateContent';
@@ -115,6 +115,7 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
     const calendarDate = Array(lastDate)
       .fill(0)
       .map((e, i) => {
+        dayjs.extend(weekDay);
         const date = (i + 1).toString();
         const dateStr = calendarIdentifier + '-' + (date.length === 1 ? '0' + date : date);
         const dayName = dayjs(dateStr).format('dddd');
