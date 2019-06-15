@@ -25,7 +25,7 @@ export class NgxDotCalendarYearsComponent implements OnInit, AfterViewInit {
   @Input() maxYear: number;
   @Output() showCalendar: EventEmitter<string> = new EventEmitter();
 
-  @ViewChild('yearCalendarInit') yc: ElementRef;
+  @ViewChild('yearCalendarInit', { static: false }) yc: ElementRef;
   numberOfyears: Array<number>;
 
   ngOnInit() {
