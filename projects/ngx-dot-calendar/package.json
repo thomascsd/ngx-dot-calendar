@@ -1,6 +1,6 @@
 {
-  "name": "ngx-dot-calendar",
-  "version": "0.3.4",
+  "name": "@thomascsd/ngx-dot-calendar",
+  "version": "1.0.0",
   "keywords": [
     "Angular",
     "Calendar"

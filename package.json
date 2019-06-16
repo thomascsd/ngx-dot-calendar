@@ -1,6 +1,6 @@
 {
-  "name": "ngx-dot-calendar",
-  "version": "0.3.4",
+  "name": "@thomascsd/ngx-dot-calendar",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "start": "ng serve",
@@ -8,7 +8,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build": "ng build --prod",
-    "build:lib": "ng build ngx-dot-calendar --prod",
+    "build:lib": "ng build ngx-dot-calendar",
     "deploy": "cd dist/ngx-dot-calendar && npm publish",
     "deploy:pages": "npx angular-cli-ghpages --dir=dist/ngx-dot-calendar-web"
   },
