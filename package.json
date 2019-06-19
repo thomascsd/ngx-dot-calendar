@@ -9,7 +9,7 @@
     "e2e": "ng e2e",
     "build": "ng build --prod",
     "build:lib": "ng build ngx-dot-calendar",
-    "deploy": "cd dist/ngx-dot-calendar && npm publish",
+    "deploy": "cd dist/ngx-dot-calendar && npm publish --access public",
     "deploy:pages": "npx angular-cli-ghpages --dir=dist/ngx-dot-calendar-web"
   },
   "homepage": "https://thomascsd.github.io/ngx-dot-calendar/",
