@@ -1,11 +1,11 @@
-# ngx-dot-calendar
+# @thomascsd/ngx-dot-calendar
 
-![npm version](https://badgen.net/npm/v/ngx-dot-calendar) ![](https://badgen.net/badge/license/MIT/blue)
+![npm version](https://badgen.net/npm/v/@thomascsd/ngx-dot-calendar) ![](https://badgen.net/badge/license/MIT/blue)
 
 The project fork from [az-idatepicker
 ](https://github.com/doenikoe/az-idatepicker)
 
-![Screenshot](https://github.com/thomascsd/ngx-dot-calendar/blob/master/screenshot.png)
+![Screenshot](https://raw.githubusercontent.com/thomascsd/ngx-dot-calendar/master/screenshot.png)
 
 ## Feature
 
@@ -15,7 +15,7 @@ The project fork from [az-idatepicker
 # Install
 
 ```
-npm install ngx-dot-calendar
+npm install @thomascsd/ngx-dot-calendar
 ```
 
 # Usage
