@@ -1,4 +1,12 @@
-## [2018/07/18]
+## v1.1.0 (2019-10-20)
+
+- add emitEventOnInit, default value is false
+
+## v1.0.0 (2019-6-19)
+
+- rename to @thomascsd/ngx-dot-calendar
+
+## v0.3.3 (2018-07-18)
 
 ### Changed
 
@@ -10,7 +18,7 @@
 - add color types
 - set color based on data type
 
-## [2017/12/20]
+## v0.3.0 (2017-12-20)
 
 ### Added
 
