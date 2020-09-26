@@ -14,8 +14,16 @@ The project fork from [az-idatepicker
 
 # Install
 
+1. install module:
+
 ```
 npm install @thomascsd/ngx-dot-calendar
+```
+
+2. Install peer dependencies:
+
+```
+npm install dayjs
 ```
 
 # Usage
@@ -26,22 +34,19 @@ In app.module.ts
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { NgxDotCalendarModule } from 'ngx-dot-calendar';
+import { NgxDotCalendarModule } from '@thomascsd/ngx-dot-calendar';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, NgxDotCalendarModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
 
 ```html
-<ngx-dot-calendar
-  [dateContents]="dateContents"
-  (onSelect)="setDate($event)"
-></ngx-dot-calendar>
+<ngx-dot-calendar [dateContents]="dateContents" (onSelect)="setDate($event)"></ngx-dot-calendar>
 ```
 
 # API
