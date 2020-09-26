@@ -5,23 +5,22 @@ import {
   Output,
   EventEmitter,
   OnChanges,
-  SimpleChanges
+  SimpleChanges,
 } from '@angular/core';
 import * as dayjsNs from 'dayjs';
 import * as weekDay from 'dayjs/plugin/weekday';
 const dayjs = dayjsNs;
 import { DateRenderer } from '../interfaces/DateRenderer';
 import { DateContent, colorTypes } from '../interfaces/DateContent';
-import {
-  SelectedDateContext,
-  selectedDateMode
-} from '../interfaces/SelectedDateContext';
+import { SelectedDateContext, selectedDateMode } from '../interfaces/SelectedDateContext';
+
+dayjs.extend(weekDay);
 
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'ngx-dot-calendar',
   templateUrl: './ngx-dot-calendar.component.html',
-  styleUrls: ['ngx-dot-calendar.scss']
+  styleUrls: ['ngx-dot-calendar.scss'],
 })
 export class NgxDotCalendarComponent implements OnInit, OnChanges {
   selectedDate: string = dayjs(new Date()).format('YYYY-MM-DD');
@@ -115,16 +114,12 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
     const lastDate = this.getLastDate();
     const monthCalendar = this.monthCalendar.toString();
     const calendarIdentifier =
-      this.yearCalendar +
-      '-' +
-      (monthCalendar.length === 1 ? '0' + monthCalendar : monthCalendar);
+      this.yearCalendar + '-' + (monthCalendar.length === 1 ? '0' + monthCalendar : monthCalendar);
     const calendarDate = Array(lastDate)
       .fill(0)
       .map((e, i) => {
-        dayjs.extend(weekDay);
         const date = (i + 1).toString();
-        const dateStr =
-          calendarIdentifier + '-' + (date.length === 1 ? '0' + date : date);
+        const dateStr = calendarIdentifier + '-' + (date.length === 1 ? '0' + date : date);
         const dayName = dayjs(dateStr).format('dddd');
         // const dayOfWeek = parseInt(dayjs(dateStr).format('e'), 10);
         const dayOfWeek = dayjs(dateStr).weekday();
@@ -134,11 +129,11 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
           dayjs(dateStr) > this.maxDate ||
           arr.indexOf(dayOfWeek) !== -1;
         const contents = this.dateContents
-          .filter(item => item.day === dateStr)
-          .map(item => {
+          .filter((item) => item.day === dateStr)
+          .map((item) => {
             return {
               hasContent: item.hasContent,
-              colorClassName: this.toColorClassName(item.color)
+              colorClassName: this.toColorClassName(item.color),
             };
           });
         let hasContent = false;
@@ -156,8 +151,8 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
             meta: dateStr,
             disabled: disabled,
             hasContent: hasContent,
-            colorClassName: colorClassName
-          } as DateRenderer
+            colorClassName: colorClassName,
+          } as DateRenderer,
         ];
       });
 
@@ -229,7 +224,7 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
     this.selectedDateInner(event);
     const context: SelectedDateContext = {
       selectedDate: this.dateOutput,
-      selectedDateMode: selectedDateMode.fromDateClicked
+      selectedDateMode: selectedDateMode.fromDateClicked,
     };
 
     // Emit selection event
@@ -240,7 +235,7 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
     this.selectedDateInner(event);
     const context: SelectedDateContext = {
       selectedDate: this.dateOutput,
-      selectedDateMode: selectedDateMode.fromYearPicker
+      selectedDateMode: selectedDateMode.fromYearPicker,
     };
 
     // Emit selection event

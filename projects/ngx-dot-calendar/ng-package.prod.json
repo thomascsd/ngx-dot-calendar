@@ -4,7 +4,8 @@
   "lib": {
     "entryFile": "src/public_api.ts",
     "umdModuleIds": {
-      "dayjs": "dayjs"
+      "dayjs": "dayjs",
+      "dayjs/plugin/weekday": "weekDay"
     }
   }
 }
