@@ -31,7 +31,7 @@
     "@angular/platform-server": "^11.2.14",
     "@angular/router": "^11.2.14",
     "bourbon": "^5.0.1",
-    "codelyzer": "^5.1.2",
+    "codelyzer": "^6.0.0",
     "core-js": "^3.3.2",
     "dayjs": "^1.8.16",
     "protractor": "~7.0.0",
@@ -43,7 +43,6 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1102.19",
-    "@angular-devkit/build-ng-packagr": "~0.1002.4",
     "angular-cli-ghpages": "^0.6.0",
     "ng-packagr": "^11.2.4",
     "typescript": "^4.0.8"
