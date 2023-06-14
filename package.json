@@ -7,8 +7,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build": "ng build --prod",
-    "build:lib": "ng build ngx-dot-calendar --prod",
+    "build": "ng build --configuration production",
+    "build:lib": "ng build ngx-dot-calendar --configuration production",
     "deploy": "cd dist/ngx-dot-calendar && npm publish --access public",
     "deploy:pages": "npx angular-cli-ghpages --dir=dist/ngx-dot-calendar-web"
   },
@@ -39,7 +39,7 @@
     "rxjs": "^6.6.7",
     "tslib": "^2.0.0",
     "tslint": "~6.1.0",
-    "zone.js": "~0.11.8"
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.2.18",
