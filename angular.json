@@ -126,7 +126,6 @@
       }
     }
   },
-  "defaultProject": "ngx-dot-calendar-web",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
