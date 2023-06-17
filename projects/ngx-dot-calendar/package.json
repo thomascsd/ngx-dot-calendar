@@ -1,6 +1,6 @@
 {
   "name": "@thomascsd/ngx-dot-calendar",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "keywords": [
     "Angular",
     "Calendar"
@@ -18,7 +18,7 @@
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
-    "@angular/common": "~7.1.4",
-    "@angular/core": "~7.1.4"
+    "@angular/common": "~14.3.0",
+    "@angular/core": "~14.3.0"
   }
 }
