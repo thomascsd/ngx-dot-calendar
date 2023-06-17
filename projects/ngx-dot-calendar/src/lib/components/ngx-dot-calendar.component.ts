@@ -17,7 +17,6 @@ import { SelectedDateContext, selectedDateMode } from '../interfaces/SelectedDat
 dayjs.extend(weekDay);
 
 @Component({
-  // tslint:disable-next-line:component-selector
   selector: 'ngx-dot-calendar',
   templateUrl: './ngx-dot-calendar.component.html',
   styleUrls: ['ngx-dot-calendar.scss'],
