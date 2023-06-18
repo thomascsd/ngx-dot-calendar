@@ -119,7 +119,7 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
         const dateStr = calendarIdentifier + '-' + (date.length === 1 ? '0' + date : date);
         const calDate = parseISO(dateStr);
 
-        const dayName = format(calDate, 'dddd'); //dayjs(dateStr).format('dddd');
+        const dayName = format(calDate, 'EEEE'); //dayjs(dateStr).format('dddd');
 
         const dayOfWeek = getWeek(calDate, { weekStartsOn: 0 }); //dayjs(dateStr).weekday();
         const disabled =
@@ -155,10 +155,10 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
       });
 
     const firstDayD = parseISO(calendarIdentifier + '-01');
-    const firstDay = format(firstDayD, 'dddd'); //dayjs(calendarIdentifier + '-01').format('dddd');
+    const firstDay = format(firstDayD, 'EEEE'); //dayjs(calendarIdentifier + '-01').format('dddd');
 
     const lastDayD = parseISO(calendarIdentifier + '-' + lastDate);
-    const lastDay = format(lastDayD, 'dddd'); //dayjs(calendarIdentifier + '-' + lastDate).format('dddd');
+    const lastDay = format(lastDayD, 'EEEE'); //dayjs(calendarIdentifier + '-' + lastDate).format('dddd');
     switch (firstDay) {
       case 'Monday':
         calendarDate.unshift([null]);
