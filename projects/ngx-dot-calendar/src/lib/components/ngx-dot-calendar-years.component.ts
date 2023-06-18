@@ -6,16 +6,16 @@ import {
   ViewChild,
   AfterViewInit,
   Output,
-  EventEmitter
+  EventEmitter,
 } from '@angular/core';
-import * as dayjsNs from 'dayjs';
-const dayjs = dayjsNs;
+// import * as dayjsNs from 'dayjs';
+import { setMonth, format } from 'date-fns';
 
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'ngx-dot-calendar-years',
   templateUrl: './ngx-dot-calendar-years.component.html',
-  styleUrls: ['ngx-dot-calendar-years.scss']
+  styleUrls: ['ngx-dot-calendar-years.scss'],
 })
 export class NgxDotCalendarYearsComponent implements OnInit, AfterViewInit {
   months: Array<Object>;
@@ -36,11 +36,12 @@ export class NgxDotCalendarYearsComponent implements OnInit, AfterViewInit {
     this.months = Array(12)
       .fill(0)
       .map((e, i) => {
+        const month = setMonth(new Date(), i);
+        const val = format(month, 'MMM');
+
         return {
-          val: dayjs()
-            .set('month', i)
-            .format('MMM'),
-          key: i + 1
+          val: val,
+          key: i + 1,
         };
       });
   }
@@ -49,7 +50,7 @@ export class NgxDotCalendarYearsComponent implements OnInit, AfterViewInit {
     // bring year calendar to the first view of user
     this.yc.nativeElement.scrollIntoView({
       block: 'start',
-      behaviour: 'smooth'
+      behaviour: 'smooth',
     });
   }
 
@@ -58,10 +59,9 @@ export class NgxDotCalendarYearsComponent implements OnInit, AfterViewInit {
   }
 
   backToCalendar(year: number, month: number): void {
-    const m_ = month < 10 ? '0' + month.toString() : month.toString();
-    const selectedDate = dayjs(year.toString() + '-' + m_ + '-01').format(
-      'YYYY-MM-DD'
-    );
+    const mon = month < 10 ? '0' + month.toString() : month.toString();
+    // const selectedDate = dayjs(year.toString() + '-' + mon + '-01').format('YYYY-MM-DD');
+    const selectedDate = `${year}-${mon}-01`;
     this.showCalendar.emit(selectedDate);
   }
 }

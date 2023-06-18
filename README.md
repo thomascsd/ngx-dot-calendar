@@ -23,7 +23,7 @@ npm install @thomascsd/ngx-dot-calendar
 2. Install peer dependencies:
 
 ```
-npm install dayjs
+npm install date-fns
 ```
 
 # Usage
