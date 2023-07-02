@@ -7,10 +7,14 @@ import { HeaderComponent } from './header/header.component';
 import { ModuleComponent } from './module/module.component';
 import { StandaloneComponent } from './standalone/standalone.component';
 
-const routes: Route[] = [{ path: '', redirectTo: 'module', pathMatch: 'full' }];
+const routes: Route[] = [
+  { path: '', redirectTo: 'module', pathMatch: 'full' },
+  { path: 'module', component: ModuleComponent },
+  { path: 'standalone', component: StandaloneComponent },
+];
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, ModuleComponent, StandaloneComponent],
+  declarations: [AppComponent, HeaderComponent, ModuleComponent],
   imports: [BrowserModule, NgxDotCalendarModule, RouterModule.forRoot(routes)],
   providers: [],
   bootstrap: [AppComponent],
