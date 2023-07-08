@@ -4,7 +4,6 @@ import { DateContent, colorTypes } from 'ngx-dot-calendar';
 @Component({
   selector: 'app-module',
   templateUrl: './module.component.html',
-  styleUrls: ['./module.component.css'],
 })
 export class ModuleComponent implements OnInit {
   dateContents: DateContent[];

@@ -5,14 +5,7 @@ import { DateContent, colorTypes, NgxDotCalendarModule } from 'ngx-dot-calendar'
   selector: 'app-standalone',
   standalone: true,
   imports: [NgxDotCalendarModule],
-  template: `
-    <div class="d-flex justify-content-center">
-      <ngx-dot-calendar
-        [dateContents]="dateContents"
-        (onSelect)="setDate($event)"
-      ></ngx-dot-calendar>
-    </div>
-  `,
+  templateUrl: './standalone.component.html',
 })
 export class StandaloneComponent implements OnInit {
   dateContents: DateContent[];
