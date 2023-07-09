@@ -9,8 +9,11 @@ The project fork from [az-idatepicker
 
 ## Feature
 
+- Supports Angular v14 and above
 - Support RWD
-- Display dot based on whether has data
+- Display dots under the dates based on the provided data.
+- Supports Ivy
+- Supports Standalone mode
 
 # Install
 
