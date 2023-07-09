@@ -1,3 +1,9 @@
+## v2.0.0 (2023-07-08)
+
+- Supports Angular v14 and above
+- Supports Ivy
+- Supports Standalone mode
+
 ## v1.1.1 (2020-09-26)
 
 - Fix TypeError: dayjs(...).weekday is not a function (#3)
@@ -15,7 +21,7 @@
 ### Changed
 
 - Upgrade to Angular v6
-- Uprade to bouboun v5.1
+- Upgrade to bouboun v5.1
 
 ### Added
 
@@ -26,5 +32,5 @@
 
 ### Added
 
-- Suport RWD
+- Supports RWD
 - Add dataContent

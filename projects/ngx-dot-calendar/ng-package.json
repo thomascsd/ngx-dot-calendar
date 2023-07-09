@@ -3,10 +3,6 @@
   "dest": "../../dist/ngx-dot-calendar",
   "deleteDestPath": false,
   "lib": {
-    "entryFile": "src/public_api.ts",
-    "umdModuleIds": {
-      "dayjs": "dayjs",
-      "dayjs/plugin/weekday": "weekDay"
-    }
+    "entryFile": "src/public_api.ts"
   }
 }
