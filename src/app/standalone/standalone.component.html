@@ -1,0 +1,70 @@
+<div class="d-flex flex-column justify-content-center">
+  <ngx-dot-calendar
+    [dateContents]="dateContents"
+    (onSelect)="setDate($event)"
+    style="height: 350px"
+  ></ngx-dot-calendar>
+
+  <pre
+    class="javascript"
+    style="font-family: monospace"
+  ><span style="color: #FF0000;">import</span> <span style="color: #009900;">&#123;</span> Component<span style="color: #339933;">,</span> OnInit <span style="color: #009900;">&#125;</span> from <span style="color: #3366CC;">'@angular/core'</span><span style="color: #339933;">;</span>
+    <span style="color: #FF0000;">import</span> <span style="color: #009900;">&#123;</span> DateContent<span style="color: #339933;">,</span> colorTypes<span style="color: #339933;">,</span> NgxDotCalendarModule <span style="color: #009900;">&#125;</span> from <span style="color: #3366CC;">'ngx-dot-calendar'</span><span style="color: #339933;">;</span>
+    &nbsp;
+    <span style="color: #339933;">@</span>Component<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#123;</span>
+      selector<span style="color: #339933;">:</span> <span style="color: #3366CC;">'app-standalone'</span><span style="color: #339933;">,</span>
+      standalone<span style="color: #339933;">:</span> <span style="color: #003366; font-weight: bold;">true</span><span style="color: #339933;">,</span>
+      imports<span style="color: #339933;">:</span> <span style="color: #009900;">&#91;</span>NgxDotCalendarModule<span style="color: #009900;">&#93;</span><span style="color: #339933;">,</span>
+      template<span style="color: #339933;">:</span> `
+        <span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;d-flex flex-column justify-content-center&quot;</span><span style="color: #339933;">&gt;</span>
+          <span style="color: #339933;">&lt;</span>ngx<span style="color: #339933;">-</span>dot<span style="color: #339933;">-</span>calendar
+            <span style="color: #009900;">&#91;</span>dateContents<span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;dateContents&quot;</span>
+            <span style="color: #009900;">&#40;</span>onSelect<span style="color: #009900;">&#41;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;setDate($event)&quot;</span>
+          <span style="color: #339933;">&gt;&lt;/</span>ngx<span style="color: #339933;">-</span>dot<span style="color: #339933;">-</span>calendar<span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+      `<span style="color: #339933;">,</span>
+    <span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span>
+    <span style="color: #FF0000;">export</span> <span style="color: #FF0000;">class</span> StandaloneComponent <span style="color: #FF0000;">implements</span> OnInit <span style="color: #009900;">&#123;</span>
+      dateContents<span style="color: #339933;">:</span> DateContent<span style="color: #009900;">&#91;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span>
+    &nbsp;
+      ngOnInit<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">:</span> <span style="color: #000066; font-weight: bold;">void</span> <span style="color: #009900;">&#123;</span>
+        <span style="color: #000066; font-weight: bold;">const</span> now <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">new</span> <span style="">Date</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+        <span style="color: #000066; font-weight: bold;">const</span> year <span style="color: #339933;">=</span> now.<span style="color: #660066;">getFullYear</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+        <span style="color: #000066; font-weight: bold;">const</span> month <span style="color: #339933;">=</span> now.<span style="color: #660066;">getMonth</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #339933;">+</span> <span style="color: #CC0000;">1</span><span style="color: #339933;">;</span>
+        <span style="color: #000066; font-weight: bold;">const</span> dMon <span style="color: #339933;">=</span> month <span style="color: #339933;">&lt;</span> <span style="color: #CC0000;">10</span> <span style="color: #339933;">?</span> <span style="color: #3366CC;">'0'</span> <span style="color: #339933;">+</span> month <span style="color: #339933;">:</span> month.<span style="color: #660066;">toString</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    &nbsp;
+        console.<span style="color: #660066;">log</span><span style="color: #009900;">&#40;</span>`date<span style="color: #339933;">:</span>$<span style="color: #009900;">&#123;</span>year<span style="color: #009900;">&#125;</span><span style="color: #339933;">-</span>$<span style="color: #009900;">&#123;</span>dMon<span style="color: #009900;">&#125;</span><span style="color: #339933;">-</span>01`<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    &nbsp;
+        <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">dateContents</span> <span style="color: #339933;">=</span> <span style="color: #009900;">&#91;</span>
+          <span style="color: #009900;">&#123;</span>
+            day<span style="color: #339933;">:</span> `$<span style="color: #009900;">&#123;</span>year<span style="color: #009900;">&#125;</span><span style="color: #339933;">-</span>$<span style="color: #009900;">&#123;</span>dMon<span style="color: #009900;">&#125;</span><span style="color: #339933;">-</span>01`<span style="color: #339933;">,</span>
+            hasContent<span style="color: #339933;">:</span> <span style="color: #003366; font-weight: bold;">true</span><span style="color: #339933;">,</span>
+            color<span style="color: #339933;">:</span> colorTypes.<span style="color: #660066;">red</span><span style="color: #339933;">,</span>
+          <span style="color: #009900;">&#125;</span><span style="color: #339933;">,</span>
+          <span style="color: #009900;">&#123;</span>
+            day<span style="color: #339933;">:</span> `$<span style="color: #009900;">&#123;</span>year<span style="color: #009900;">&#125;</span><span style="color: #339933;">-</span>$<span style="color: #009900;">&#123;</span>dMon<span style="color: #009900;">&#125;</span><span style="color: #339933;">-</span>06`<span style="color: #339933;">,</span>
+            hasContent<span style="color: #339933;">:</span> <span style="color: #003366; font-weight: bold;">true</span><span style="color: #339933;">,</span>
+            color<span style="color: #339933;">:</span> colorTypes.<span style="color: #660066;">blue</span><span style="color: #339933;">,</span>
+          <span style="color: #009900;">&#125;</span><span style="color: #339933;">,</span>
+          <span style="color: #009900;">&#123;</span>
+            day<span style="color: #339933;">:</span> `$<span style="color: #009900;">&#123;</span>year<span style="color: #009900;">&#125;</span><span style="color: #339933;">-</span>$<span style="color: #009900;">&#123;</span>dMon<span style="color: #009900;">&#125;</span><span style="color: #339933;">-</span><span style="color: #CC0000;">11</span>`<span style="color: #339933;">,</span>
+            hasContent<span style="color: #339933;">:</span> <span style="color: #003366; font-weight: bold;">true</span><span style="color: #339933;">,</span>
+            color<span style="color: #339933;">:</span> colorTypes.<span style="color: #660066;">green</span><span style="color: #339933;">,</span>
+          <span style="color: #009900;">&#125;</span><span style="color: #339933;">,</span>
+          <span style="color: #009900;">&#123;</span>
+            day<span style="color: #339933;">:</span> `$<span style="color: #009900;">&#123;</span>year<span style="color: #009900;">&#125;</span><span style="color: #339933;">-</span>$<span style="color: #009900;">&#123;</span>dMon<span style="color: #009900;">&#125;</span><span style="color: #339933;">-</span><span style="color: #CC0000;">17</span>`<span style="color: #339933;">,</span>
+            hasContent<span style="color: #339933;">:</span> <span style="color: #003366; font-weight: bold;">true</span><span style="color: #339933;">,</span>
+            color<span style="color: #339933;">:</span> colorTypes.<span style="color: #660066;">purple</span><span style="color: #339933;">,</span>
+          <span style="color: #009900;">&#125;</span><span style="color: #339933;">,</span>
+          <span style="color: #009900;">&#123;</span>
+            day<span style="color: #339933;">:</span> `$<span style="color: #009900;">&#123;</span>year<span style="color: #009900;">&#125;</span><span style="color: #339933;">-</span>$<span style="color: #009900;">&#123;</span>dMon<span style="color: #009900;">&#125;</span><span style="color: #339933;">-</span><span style="color: #CC0000;">23</span>`<span style="color: #339933;">,</span>
+            hasContent<span style="color: #339933;">:</span> <span style="color: #003366; font-weight: bold;">true</span><span style="color: #339933;">,</span>
+            color<span style="color: #339933;">:</span> colorTypes.<span style="color: #660066;">brown</span><span style="color: #339933;">,</span>
+          <span style="color: #009900;">&#125;</span><span style="color: #339933;">,</span>
+        <span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span>
+      <span style="color: #009900;">&#125;</span>
+    &nbsp;
+      setDate<span style="color: #009900;">&#40;</span>evt<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#125;</span>
+    <span style="color: #009900;">&#125;</span>
+    &nbsp;</pre>
+</div>

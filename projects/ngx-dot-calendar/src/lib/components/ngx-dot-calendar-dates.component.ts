@@ -1,10 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  // tslint:disable-next-line:component-selector
   selector: 'ngx-dot-calendar-dates',
   templateUrl: './ngx-dot-calendar-dates.component.html',
-  styleUrls: ['ngx-dot-calendar-dates.scss']
+  styleUrls: ['ngx-dot-calendar-dates.scss'],
 })
 export class NgxDotCalendarDatesComponent implements OnInit {
   dateSymbol: string[];

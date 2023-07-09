@@ -7,23 +7,18 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import * as dayjsNs from 'dayjs';
-import * as weekDay from 'dayjs/plugin/weekday';
-const dayjs = dayjsNs;
+import { parseISO, format, setMonth, getWeek } from 'date-fns';
 import { DateRenderer } from '../interfaces/DateRenderer';
 import { DateContent, colorTypes } from '../interfaces/DateContent';
 import { SelectedDateContext, selectedDateMode } from '../interfaces/SelectedDateContext';
 
-dayjs.extend(weekDay);
-
 @Component({
-  // tslint:disable-next-line:component-selector
   selector: 'ngx-dot-calendar',
   templateUrl: './ngx-dot-calendar.component.html',
   styleUrls: ['ngx-dot-calendar.scss'],
 })
 export class NgxDotCalendarComponent implements OnInit, OnChanges {
-  selectedDate: string = dayjs(new Date()).format('YYYY-MM-DD');
+  selectedDate: string = '';
   dateOutput: string;
   selectedYear: string;
   selectedDay: string;
@@ -39,7 +34,7 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
   viewCalendar = true;
   now = new Date();
 
-  @Input() format = 'YYYY-MM-DD';
+  @Input() format = 'yyyy-MM-dd';
   @Input() id = '';
   @Input() idatePickerBinding: any = '';
   @Input() sundayHighlight = false;
@@ -55,7 +50,10 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
   @Output()
   getSelectedDate: EventEmitter<SelectedDateContext> = new EventEmitter();
 
-  constructor() {}
+  constructor() {
+    const now = new Date();
+    this.selectedDate = format(now, 'yyyy-MM-dd');
+  }
 
   ngOnInit() {
     if (this.idatePickerBinding !== '' && this.emitEventOnInit) {
@@ -83,9 +81,8 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
   }
 
   renderCalendar(): void {
-    this.monthCalendarStr = dayjs(new Date())
-      .set('month', this.monthCalendar - 1)
-      .format('MMMM');
+    const month = setMonth(new Date(), this.monthCalendar - 1);
+    this.monthCalendarStr = format(month, 'MMMM'); //dayjs(new Date())      .set('month', this.monthCalendar - 1)      .format('MMMM');
 
     this.dates = this.populateDate();
     this.dates = this.getDateChunk(this.dates, 7);
@@ -96,18 +93,18 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
 
   formatDateStr(): void {
     console.log(`selectedDate:${this.selectedDate}`);
+    const selDate = parseISO(this.selectedDate);
 
-    this.selectedDay = dayjs(this.selectedDate).format('DD');
+    this.selectedDay = format(selDate, 'dd'); //dayjs(this.selectedDate).format('dd');
 
-    this.selectedDayStr = dayjs(this.selectedDate).format('ddd');
+    this.selectedDayStr = format(selDate, 'ddd'); // dayjs(this.selectedDate).format('ddd');
 
-    this.selectedMonth = dayjs(this.selectedDate).format('MM');
+    this.selectedMonth = format(selDate, 'MM'); // dayjs(this.selectedDate).format('MM');
 
-    this.selectedMonthStr = dayjs()
-      .set('month', parseInt(this.selectedMonth, 10) - 1)
-      .format('MMM');
+    const month = setMonth(new Date(), parseInt(this.selectedMonth, 10) - 1);
+    this.selectedMonthStr = format(month, 'MMM');
 
-    this.selectedYear = dayjs(this.selectedDate).format('YYYY');
+    this.selectedYear = format(selDate, 'yyyy');
   }
 
   populateDate(): Object[] {
@@ -120,14 +117,15 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
       .map((e, i) => {
         const date = (i + 1).toString();
         const dateStr = calendarIdentifier + '-' + (date.length === 1 ? '0' + date : date);
-        const dayName = dayjs(dateStr).format('dddd');
-        // const dayOfWeek = parseInt(dayjs(dateStr).format('e'), 10);
-        const dayOfWeek = dayjs(dateStr).weekday();
-        const arr = this.disableDays;
+        const calDate = parseISO(dateStr);
+
+        const dayName = format(calDate, 'EEEE'); //dayjs(dateStr).format('dddd');
+
+        const dayOfWeek = getWeek(calDate, { weekStartsOn: 0 }); //dayjs(dateStr).weekday();
         const disabled =
-          dayjs(dateStr) < this.minDate ||
-          dayjs(dateStr) > this.maxDate ||
-          arr.indexOf(dayOfWeek) !== -1;
+          calDate < this.minDate ||
+          calDate > this.maxDate ||
+          this.disableDays.indexOf(dayOfWeek) !== -1;
         const contents = this.dateContents
           .filter((item) => item.day === dateStr)
           .map((item) => {
@@ -156,8 +154,11 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
         ];
       });
 
-    const firstDay = dayjs(calendarIdentifier + '-01').format('dddd');
-    const lastDay = dayjs(calendarIdentifier + '-' + lastDate).format('dddd');
+    const firstDayD = parseISO(calendarIdentifier + '-01');
+    const firstDay = format(firstDayD, 'EEEE'); //dayjs(calendarIdentifier + '-01').format('dddd');
+
+    const lastDayD = parseISO(calendarIdentifier + '-' + lastDate);
+    const lastDay = format(lastDayD, 'EEEE'); //dayjs(calendarIdentifier + '-' + lastDate).format('dddd');
     switch (firstDay) {
       case 'Monday':
         calendarDate.unshift([null]);
@@ -204,12 +205,10 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
   }
 
   getLastDate(): number {
-    return parseInt(
-      dayjs(new Date(+this.yearCalendar, 0, 31))
-        .set('month', this.monthCalendar - 1)
-        .format('DD'),
-      10
-    );
+    const lastDate = new Date(+this.yearCalendar, 0, 31);
+    const lastDateM = setMonth(lastDate, this.monthCalendar - 1);
+    const day = format(lastDateM, 'dd');
+    return parseInt(day, 10);
   }
 
   // Split array of dates into chunk
@@ -243,9 +242,12 @@ export class NgxDotCalendarComponent implements OnInit, OnChanges {
   }
 
   private selectedDateInner(event: string) {
-    this.selectedDate = dayjs(event).format('YYYY-MM-DD');
+    const selDate = parseISO(event);
+    this.selectedDate = format(selDate, 'yyyy-MM-dd'); //dayjs(event).format('YYYY-MM-dd');
     this.formatDateStr();
-    this.dateOutput = dayjs(this.selectedDate).format(this.format);
+
+    const outputDate = parseISO(this.selectedDate);
+    this.dateOutput = format(outputDate, this.format); //dayjs(this.selectedDate).format(this.format);
   }
   changeCalendar(direction: string): void {
     if (direction === 'prev') {
